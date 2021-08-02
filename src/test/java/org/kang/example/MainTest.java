@@ -1,9 +1,10 @@
 package org.kang.example;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author kang
@@ -11,8 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @SpringBootTest
 class MainTest {
+    @Value("${test.message}")
+    private String message;
+
     @Test
-    public void testBooleanTrue() {
-        assertTrue(Boolean.TRUE);
+    public void contextLoads() {
+        assertEquals("This is test message", message);
     }
 }
